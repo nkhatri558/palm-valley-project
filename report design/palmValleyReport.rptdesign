@@ -1,0 +1,1303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.8.0.v201806261756</property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">fixed layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="param" id="78">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="4">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://localhost:3306/palm_valley</property>
+            <property name="odaUser">root</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Data Set" id="5">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">order_details_id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">order_details_id</text-property>
+                    <text-property name="heading">order_details_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">name</text-property>
+                    <text-property name="heading">name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">quantity</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">quantity</text-property>
+                    <text-property name="heading">quantity</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">price</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">price</text-property>
+                    <text-property name="heading">price</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">total</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">total</text-property>
+                    <text-property name="heading">total</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">order_details_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">quantity</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">price</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">total</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">order_details_id</property>
+                    <property name="nativeName">order_details_id</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">name</property>
+                    <property name="nativeName">name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">quantity</property>
+                    <property name="nativeName">quantity</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">price</property>
+                    <property name="nativeName">price</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">3</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">total</property>
+                    <property name="nativeName">total</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">3</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[SELECT o.`order_details_id`, p.`name`, o.`quantity`, o.`price`, o.`price`*o.`quantity` AS total FROM order_details o JOIN product p ON o.`product_id` = p.`product_id` WHERE o.order_id = 4 AND o.active = '1';]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>order_details_id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>order_details_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>order_details_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>order_id</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>order_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>order_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>product_id</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>product_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>product_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>quantity</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>quantity</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>quantity</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>price</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>3</design:nativeDataTypeCode>
+            <design:precision>16</design:precision>
+            <design:scale>4</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>price</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>price</design:label>
+            <design:formattingHints>
+              <design:displaySize>18</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>active</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>1</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>active</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>active</design:label>
+            <design:formattingHints>
+              <design:displaySize>1</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>created_by</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>created_by</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>created_by</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>created_date</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>created_date</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>created_date</design:label>
+            <design:formattingHints>
+              <design:displaySize>19</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>modified_by</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>modified_by</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>modified_by</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>modified_date</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>modified_date</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>modified_date</design:label>
+            <design:formattingHints>
+              <design:displaySize>19</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Order" id="49">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">order_id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">order_id</text-property>
+                    <text-property name="heading">order_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">order_no</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">order_no</text-property>
+                    <text-property name="heading">order_no</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">username</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">username</text-property>
+                    <text-property name="heading">username</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">order_date</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">order_date</text-property>
+                    <text-property name="heading">order_date</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">status</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">status</text-property>
+                    <text-property name="heading">status</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">order_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">order_no</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">username</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">order_date</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">status</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">order_id</property>
+                    <property name="nativeName">order_id</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">order_no</property>
+                    <property name="nativeName">order_no</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">username</property>
+                    <property name="nativeName">username</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">order_date</property>
+                    <property name="nativeName">order_date</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">status</property>
+                    <property name="nativeName">status</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[SELECT o.`order_id`, o.`order_no`, c.username, o.`order_date`, o.`status` FROM orders o JOIN users c ON o.`customer_id` = c.`user_id` WHERE o.order_id = 4 AND o.`active` = '1';]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>order_id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>order_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>order_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>order_no</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>order_no</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>order_no</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>username</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>username</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>username</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>order_date</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>order_date</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>order_date</design:label>
+            <design:formattingHints>
+              <design:displaySize>19</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>status</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>status</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>status</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="OrderDetails" id="77">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">product_id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">product_id</text-property>
+                    <text-property name="heading">product_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">username</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">username</text-property>
+                    <text-property name="heading">username</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">order_no</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">order_no</text-property>
+                    <text-property name="heading">order_no</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">name</text-property>
+                    <text-property name="heading">name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">quantity</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">quantity</text-property>
+                    <text-property name="heading">quantity</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">price</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">price</text-property>
+                    <text-property name="heading">price</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">order_date</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">order_date</text-property>
+                    <text-property name="heading">order_date</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">total</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">total</text-property>
+                    <text-property name="heading">total</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">param_1</property>
+                    <property name="paramName">param</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">product_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">username</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">order_no</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">quantity</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">price</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">order_date</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">total</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">product_id</property>
+                    <property name="nativeName">product_id</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">username</property>
+                    <property name="nativeName">username</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">order_no</property>
+                    <property name="nativeName">order_no</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">name</property>
+                    <property name="nativeName">name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">quantity</property>
+                    <property name="nativeName">quantity</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">price</property>
+                    <property name="nativeName">price</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">3</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">order_date</property>
+                    <property name="nativeName">order_date</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">total</property>
+                    <property name="nativeName">total</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">3</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[SELECT p.product_id,u.username, o.order_no,p.`name`,od.`quantity`,p.price, o.order_date, od.`quantity`*p.`price` as total FROM order_details od
+INNER JOIN orders o ON od.`order_id`=o.`order_id` 
+INNER JOIN product p ON od.`product_id` = p.`product_id` 
+INNER JOIN users u ON o.customer_id= u.user_id
+WHERE o.order_no = ?]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <image id="76">
+            <property name="height">1.2916666666666667in</property>
+            <property name="width">7.927083333333333in</property>
+            <property name="source">embed</property>
+            <property name="imageName">Titanic.jpg</property>
+        </image>
+        <label id="6">
+            <property name="fontSize">24pt</property>
+            <property name="textAlign">center</property>
+            <text-property name="text">PALM VALLEY RESTAURANT</text-property>
+        </label>
+        <label id="40">
+            <property name="textAlign">center</property>
+            <text-property name="text">ADDRESS:XYZ</text-property>
+        </label>
+        <label id="41">
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="marginLeft">50pt</property>
+            <property name="marginBottom">5pt</property>
+            <property name="marginRight">50pt</property>
+            <property name="textAlign">center</property>
+            <text-property name="text">PHONE NO:+92123123123</text-property>
+        </label>
+        <grid id="53">
+            <property name="width">7.947916666666667in</property>
+            <column id="54">
+                <property name="width">1.7291666666666667in</property>
+            </column>
+            <column id="55"/>
+            <column id="56">
+                <property name="width">1.9895833333333333in</property>
+            </column>
+            <column id="57">
+                <property name="width">1.9791666666666667in</property>
+            </column>
+            <row id="58">
+                <cell id="59">
+                    <label id="68">
+                        <text-property name="text">Order No:</text-property>
+                    </label>
+                </cell>
+                <cell id="60">
+                    <data id="80">
+                        <property name="dataSet">OrderDetails</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">order_no</property>
+                                <text-property name="displayName">order_no</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["order_no"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">order_no</property>
+                    </data>
+                </cell>
+                <cell id="61">
+                    <label id="70">
+                        <text-property name="text">Customer Name:</text-property>
+                    </label>
+                </cell>
+                <cell id="62">
+                    <data id="81">
+                        <property name="dataSet">OrderDetails</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">username</property>
+                                <text-property name="displayName">username</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["username"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">username</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="63">
+                <cell id="64">
+                    <label id="72">
+                        <text-property name="text">Order Date:</text-property>
+                    </label>
+                </cell>
+                <cell id="65">
+                    <data id="82">
+                        <property name="dataSet">OrderDetails</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">order_date</property>
+                                <text-property name="displayName">order_date</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["order_date"]</expression>
+                                <property name="dataType">date-time</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">order_date</property>
+                    </data>
+                </cell>
+                <cell id="66"/>
+                <cell id="67"/>
+            </row>
+        </grid>
+        <table id="7">
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="dataSet">OrderDetails</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">product_id</property>
+                    <text-property name="displayName">product_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["product_id"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">username</property>
+                    <text-property name="displayName">username</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["username"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">order_no</property>
+                    <text-property name="displayName">order_no</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["order_no"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">name</property>
+                    <text-property name="displayName">name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">quantity</property>
+                    <text-property name="displayName">quantity</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["quantity"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">price</property>
+                    <text-property name="displayName">price</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["price"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">order_date</property>
+                    <text-property name="displayName">order_date</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["order_date"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation</property>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["price"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation_1</property>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["price"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">total</property>
+                    <text-property name="displayName">total</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["total"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation_2</property>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["total"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <column id="23"/>
+            <column id="24"/>
+            <column id="25"/>
+            <column id="26"/>
+            <header>
+                <row id="8">
+                    <cell id="9">
+                        <label id="28">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <text-property name="text">Product Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="10">
+                        <label id="31">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <text-property name="text">Quantity</text-property>
+                        </label>
+                    </cell>
+                    <cell id="11">
+                        <label id="32">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <text-property name="text">price</text-property>
+                        </label>
+                    </cell>
+                    <cell id="12">
+                        <label id="35">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <text-property name="text">Total Price</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="13">
+                    <cell id="14">
+                        <data id="83">
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">name</property>
+                        </data>
+                    </cell>
+                    <cell id="15">
+                        <data id="84">
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">quantity</property>
+                        </data>
+                    </cell>
+                    <cell id="16">
+                        <data id="85">
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">price</property>
+                        </data>
+                    </cell>
+                    <cell id="17">
+                        <data id="91">
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">total</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="18">
+                    <cell id="19"/>
+                    <cell id="20"/>
+                    <cell id="21">
+                        <label id="75">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <text-property name="text">Total</text-property>
+                        </label>
+                    </cell>
+                    <cell id="22">
+                        <data id="92">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">Aggregation_2</property>
+                        </data>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+    </body>
+    <list-property name="images">
+        <structure>
+            <property name="name">Titanic.jpg</property>
+            <property name="data">
+                /9j/2wBDAAQDAwQDAwQEAwQFBAQFBgoHBgYGBg0JCggKDw0QEA8NDw4RExgUERIXEg4PFRwVFxkZGxsb
+                EBQdHx0aHxgaGxr/wAALCADdASwBASIA/8QAHQAAAgIDAQEBAAAAAAAAAAAAAgMBBAAFBgcICf/EAEkQ
+                AAEDAgQDBgQDBQUFBgcAAAECAxEABAUSITEGE0EHIlFhcYEIFJGhIzKxFUJiwdEWM1Jy8CRDgpLhFxgl
+                orLxJlNUg5Ok0v/aAAgBAQAAPwD69sGEm3kjUaHSrzbCFEHKJrPlQhXXesTbJOpHWdaeGkZentRNsp60
+                0ISNh7RUcpPhFFyxJHlUckGDUFnXTwqA34jWmBsRvt41JYSZG3kKxLPpH0pgRESfpRZdvGoA8KWOaDC0
+                pjxBo41kjzoFJA23qAJMH6Vk0cA7eMVJ9qQ+4GWVuFQSAU6+pA/nTjoTtUFInz86ggQJ1qIB2AihCQen
+                TpWcsE9PWhU0PSoSyPATVe4a8vWqbjMJ7x+1Vy2B4+9YEwNNPerVs3ykZRPWJq602RodKJYVI0+lAlCu
+                n0pgZV60xtGUCaPWdBUbdNalIJ6elZOutR5dKiYNMChl3mjHTSp8amamBHhWCs09AamdRQK12ilKEbj0
+                oQmFb6dBTAYrDJEiq18E/I3BVqEtlXuNf5VaPeJI1nyoSfHpQkwTWT0PWhjXSimaknXSs286W4CRHTyq
+                qtvSNZquWDB01PWlKZCDB3qzboI3GtXkTvRETvEVMRv7VnQgbVm3SQRWTWaedYdtKEKGlZIExvS1EzUh
+                cHXWKNDkgHfpTUqJmanWpB0EmsCvOi6daHNpvQlz60tSwdBQJVJNTmI9qnneO21KvVBdpdEAg8hcR/lN
+                NtnM9swsGc7aTPsKJavEaUrmAiNqKZFTM7VkaxRgjfTSs18PWoIEGdaQtGtDyp3FLWyFGTIqWTAGtWkx
+                0oydRWaUJ0PnRQIAJOtCY6EepoAVycxEfzoyRr49aA6DeaHQ6T1rD3jGtQU9JijSQNDTkEHaKn71PSoz
+                iYJkVGefCoKvOlrMDf3pZVGiutCFiTFTn89KiUiY2rAqUrAE5kqn6UjBXQ7g2HLBBJtm/wD0gfyqypzb
+                cxuKHOI1okkRtRA7xAokqJEqFFmB996mYG8VGYaz1qDqIoYjTwoSAOv1pCMsAhZga+tWmleOg8qkqgiS
+                Iqc0nU1hPjUZqEq1MERS1KUVERoNj41JXA19qHmTr5dKxLiRuR0puZPQ60UA0tW4FEnffWnAz61ihpp0
+                FKMJOlR5CpJMdTGlA4rWPGlkTAVofCoKoO1RKdCCBr4UK1aVLK/xEknNrMeNanhO4L3DeHZmy0pCFNqT
+                mzflWU79dq26gfGlqIBOulMbWDudvGm5gIIMU0f5qwESQKgxOhoQkbij9TQKBJEa0C28yjqPc1TaUQIm
+                rTajAG4pkwDFNGsRUlMetBGulCEnSNqhXjtFLCJTrB/nS3EKBlP5fKsQnMATsdRIqwgDNmMesU4/lMb0
+                C0yfShSQoA7kkCJp6IoyJ6UtSJ31qAk9d6IgTp060kiSrp1oIBMVChJiklvQa79KFUmiYT+Kg9ARpWj4
+                LUVYItBATyL66a06AOk/zroS2ZJA9aUtJGuXahKTA/rTEJ7swYqc5BA2NGkworBJJ6VOq4yxA3pgGnnt
+                UzFCfLeoA8/tVFCTAmasNCd9x404ax4VIWQQI0ogokE6GikknpQwT/0oSDQEGY3BoTIOmlDJBk0xCzBy
+                anpVlIzDXURvUKa08utIyKSo5DEmdRVlsH0plAs6H60nNGnXxotSYpalQdTrFLUYGaZmhSYJ0JkyZ6UK
+                um8+VQVd2BofSsJAI23rmuC18r+0DJObl43cwPDNBArrgrTU0CtdtYqENZtSJH61Y5ZAOUb1WcR36wAk
+                HPPlQJUdh9ac2omPL7mj1OpO9CdR4UOcDQqIpLSCRtp61YS2SfOKIJ8YnwpgTAj7VEAESdKTZqKmSpRS
+                TzXRoZAhagKsRG8aUKh0qBttUBIidiaWUpzQoxRtoAgDarSUyBOtSRO1IWAlWs01BzNyNTRGMs6jTWkP
+                EhJCNCdjFIlesg6b1BdykGN6BawkBSyACYogNKkDXUdZNCtH5Y3O2lKCO94+lY6B17qY1M1wXBF88viP
+                jG3uLdFvnv0XTcOZiAtMAK8CUhJ9ZFegpOoG5pgTKtB/1qwkQgxBNQVhIgHbT3quvvEk7TpBpTmbWYA8
+                6xBITAAo2ydR4U1CtdKlfntuZ60oif8A3ijbgAaSaelOhnrQ7eMTRem07GoUqY0jxiquGQq2cPhdXA08
+                nliroGmm3nWKTM1mUSCNzU5BGg1pa2hvHerGwRuJjwFWUJUpOgj1o+XpqoAfWqF842zqTvprWWdy2tJ2
+                J6mathaegFJdVsE6a1rMVxBrC8OvcQuw4q0s7dx91LKczigkSQB46V8vM/Ftf45xWzhGC8NWWGWjmYB2
+                9uFXDxgGNE5UjbbX1rvOyftnxbjnjC7wDF7LDEtssOOh+2Q42uU9CCogg+1e2kbGdJ1okmPWpJkCDPtS
+                wUyoK0AHhrSLk8xsJG6zEdQOv2rjsCUm64240ZebSjlP26IQrcBsAH6KFdw0kJ7hJkDQ+IpxTlAM+VSH
+                DrufKlrVqf1pROpIOlLWreJqW1giN/amohI03O+tNbmDI1ojv3dj40uI0k0xlMRtp0p4TrMRFAQJ8OtY
+                N4AE1JGorV4A5zbW5jMmMQvEwR4PrrchNFl1EVmSQQBtUKSE9Y9KqOXEZg0hTqh0GtCwt45l8lwR1ymB
+                TFXCo1OnWj54ybmvi74pviM454D4+c4W4Pcw7C7O3YZcN0bQXFw6VpCjquUpGsABM+dJ7OO27jq47V+G
+                uH73iM3+E4rcNpfZuLK3PdUNYKUJUny1r7TbUDokSPGocJJOWBG09a0fE4K+F8fTAJOGXIg7f3Sq/Lbh
+                S55PafaBx9MJuFzHhBr6O+Gpx5PbNjBdV+G4p5plKgoKUnkBSo0jKD57kxsa+z0IUEDeJokpzmRJHjUn
+                u7bfpQpSZM+NEEAqUpQkAZRXD4Qjk9pHFbUAc+0ZcT/yNV2aF8xKDPe3BjY1YbcDkie8nQjwNSW9dOlJ
+                JKVqmMpGnjNYUggRS1tSCdiaBKY6a+NOQrorU+MU2Y2mawqIO21AVEHu6CntmCCQJHWng5qzJr4HyqSP
+                DwqA2VKkmBIFanhhIVZ3qpOmLX6fpcLFbolKBM1wHHHbhwD2cXzOHcacUWeGYi+kLbs0tuPv5VbEobSo
+                gGDBMVHAnbPwR2lX17a8FY8jE7yybDlzbm2eYcbQTGYhxCZE+E13TjqcubMII286+MPjp4nxnCWuDrDC
+                sZxDDrC9bul3NtaXSmUPqSpABXlIKoBIg6V4Z2SYoq17V+AUWlzc2q3762S7y7haC4FKAIMHUeINfprm
+                BeVJgaiPesWU5fAxpXwN8VHZ5xDx123X44ZsPmW02lm28+48lpts8kGMyjqYHSelTwTwde8P9snBuKYs
+                hptKDahLbVylSxC+8pSYJIG0A9T4V+gLaRKhsAfrTFJCtE7xWoxy1cucFxZkHIHrJ9EjcAtkGvnjCMAw
+                /CLNDWGYfa2rak97lspBVJzSTuTPU1t+DsPC+0WwunHXHFl4JSgrMI/DUNK+g2UpCDpJ3qCIOmnpUEZR
+                J1oYyDNNYYCQI16+tcOlwNdqty0CjmXOEoKRO8A9P+CuvR3VKTuUmdvGiSQlZWBKzofMVdQoKQCDNV3U
+                D90TSpA7qhoakJgqTOkb+NSB/WpCSNqNKanWaUuCaNK9p3qy2vXrrTQoT+tYVwPOlodyyVHujU1zPAz9
+                0/hWLC8S006jiDEkjlrKgU/MriZ2MyPauidBIUROo3ma/OL400rX8Q2FobbKnf2NZFQbSVE99zUgV3nw
+                TIuGuPuMzcJSgPYUCgfvgIfSNU7jfrX2s4shqD4V8y/EvwFadomN8Kt4u7dW1hYW7/dtilK3VKWmRJBg
+                ADw3PlXmPD/ZzZ8OcfcLrwBLwS25blbty+Fypt0KSmMu0jWCDX3Qgha3FZSgBRkH71jh7sJInp5V4T2h
+                NJa42vkp0BbYUY6ktjWtBbBDfEWDuqhLguGgFEbDmJr6aR3YQteYgxNWy4EjTTwmqlwFOW1wlR/My4J9
+                Umvn5TZbtW1tnOsI0B0mrHC6lt8bYK4FBLarhuU5dZIUN/tX0C2IGsnqKNKQZ2NQQmfXwpTqUkwCd5NB
+                ygF5/wAysuUDpvXHY7iuBYdxZheF3+D3F9j2IsLXa3DNihzIhIVILpIKNiAPPzrp1GFoVBGZOUzRRIE/
+                pRtu8vfbr5edOKpBmlOJilZsvp0ogo6URc6a7+FQHJOm29SpRKSoadTVcrWachebrPpTUugRG1MC8496
+                LNCZrCMykIVsCFK+ug/14VzvBLg+QxY6QeIcVT/+ysiuhcWlCZJOuwr527UbZNv2gX9yhYFw9bW+dYHe
+                /LoJ3geFazsNtbex4+x95IWbp9p11S1qJMlSf9RX0YHuYkI6ganwrx/tiyt3+CNoKUqDDxyzqAVJgx7G
+                vK7e6DfF2BNqzE85BmJTosda+s3HwHVwdQo6Eb/6/rWBYCSdFAzoa8P7RpTxpcGYm3YO38P/AErl1Nk4
+                5hLukocQZiT/AHidjX1Ac4U5lTrmMyaekEgagePWoSM6XVAlSVZkbaTH/WvBbS3evkcizb5rxSopSgDQ
+                J1M/SmYezc4bxZgTWIW67dwPsK/ETBIzkAj717zzkhTgSuI1E7Rr1ow8lQBGg6VAcTMRqBNAk6lZ0JNE
+                ASZ6xpI2rg+Kfwe0Pgx8gfiJdaJjbvp//s12TqcozRICgYpqiBOkg0skb/yqEuJQcpEp6H+VSpQgmPQU
+                CYcGqFJVsQaFQU2RAkHShz6RrRiPDymiUAQQTFV1gzuPcGmJgCQRUpcAG/0FMS+lII31qw24mAVEaa+w
+                o0kJUFL0JIJ0+1cVwJcRhGPhwrCv7TYqRmIMEXCjAiumzh0Z5OokDw8q8J7VE/8Axs6oxJtbcn6GtN2R
+                hdvx1iam1c5b1s6ohapyiUV9ANrSlpPdOYanz9a8a7YXs3EmGKVpOHET581XX3ry5bimeJsFhMpDqTmG
+                w76a+qLzFEWDd3cvjK0yFOLjXSdYrluLO0O+4fXbKwfha9x+1U6UXjiHxam2goAUErTLgOcnT/Ca5/ih
+                AxLjhi5ft2lYf+Gh7mPBtCkJWoHvyIkCd+taa64UcxHiJCLR2ws7CzC32LlTill0G4IbbEEkkNoBJiNR
+                Xq+IY63fXbDbTbqm1OK+YQErT3FJUkSMskSft5VprXiji66dTas8LYshA7nPHy1ug9JBWpZ+w9K1vCNk
+                w4nEOIeALlN049fuWbjrj61phLs3SVJKQnmB0rgga6axVwcHuNuXjRYs3MPuG3GltuKUA42uJSQdRIkE
+                z126VT/sPf4fYs2/C2C4ZhCmrguoW1cIKgrUSCpHofKBWzVe8b8P8P399dW15xLiTTKVNYdbLtgXVlwJ
+                yIWAD+UlZJEaEVo0dsXElmtTeJdmXFVuElQCk2IdToSJzJWNxB9/I1ub3tisMKfsbbHMJxTCn71ZSz8z
+                bEAkOBuCU5gO8obnUGa7o41bruFWiHmnrpDgbLbffg9ZyzAA11q6b1pLoQpxCVnZJWJ+lcLx+8GuIeC7
+                iYDd+tMjzLZ/ka7pRzFaFAwZBqu26VNZVHvIOVX9aYFnKOtLfWlDZzAkn8oTuo+VCwpapDwyuawJnSrI
+                XKig5pKcwMeGm9ZOaQaEJAOUwCdU1kxO80tTusCd6yJ/NM+VKU8kp0Gm4AoG3sxgakHWncwxBTpSzdlm
+                4aQowHlZfIQCrX6VSa4rtHHsQK3mUN2ThbzKdAC1BMn6bV53wxxS7h/CuN3jrKWMQd4ixJ5mzdPeWhdw
+                SlQ8UlOoVsa6i441Zs37Zi2aLzC1kLcJKEflJgKIidD6xXnfHrYxviq7fw+4bWEs2yEEklCpQomFCdRA
+                0jrSOGeG73h/HrnE7VYbC7dKVW1s2p0vHIM/eUO7KxOn2r0UYpilyjM3gtwwEqEF3UK8dtuorneJMCxT
+                ip7C+datIatH1reacey8xskd0FMkGAdfOtGvsfubnEWLsXjVo3bP57ZtCFuwiZAJIGuwmuo4mTfqLxtn
+                rBTbgKltXOJfLIKgRCZKjAiZOWuQZxrmF5zi/GeCcHcBzMFjHXcTdzJknNnQEiNDpr6VXseIrU4m4/Y9
+                ouDuWFpbrvHrTDeE8z5YQJX+OVamPBMnworjHMExFC2cLve0l4vOgOrwpr5bMCgGMysxAjqIPSa2PDXE
+                mKcP4U3YcJ9nfEty26v5gu43imd5SlNlRKlrBOhCUxOhNbDE7rtI4hwyx/Z9izw7iycSaFzas4qQRh6m
+                k53swBlwOlSUpJAITNeYXPZB2kG/Xa4jxheYdiWKqWbJ5zFbpwqQypx1alqQO6SkoBAOuWvUeBuCMesM
+                Lwy5xXiDGsXcUpFwV/tB0hTakAhEL8zQ41YdogusS/YmLustG9tRYtuXCSRamPmC5mH5x3soHvXO3r3b
+                PbcVfLWN/cOcOh1tCcQuBaOZkqbWpai2lIWMq0oSPHPPSo/t52u4Vd4Yl/BhftX7twFpRhpItAlC1I5i
+                0gABRCQD4msZ7V+Kxgj3E/GODDBmsLtUv/LWwd57jSozAtFREDUapzZk6aAmuwwbjF69axJbvDF28qxQ
+                hxblm6XnH8wJSEJWlBK4kZQTB0rb2DuFcQHmO8M43YvXDzbi3L3DCw4pTSgQFqJJygpEg6UXaS2pzDcJ
+                uWAZsL9LqgAICchBk9AK6dPE+EXN/wDK2uIMPvuXC7cIbJV+IlAcUmRpISoH0NV3sewyzvHGrjELJha+
+                8hK7pAKxJBgTOhBHsapY1xzhuDtvIaWu/vEHIGLdtThzkSkKKRpP+opdtxi3c4PiWIYdh2JXd1b2oW0y
+                /bLt1XLpQVclAUJTBTBOo1Gpq3bcUouLSzcfsMTt7t5lK1W/yKytpZSSQem4I36jaarucTYxd/s1Vhw7
+                f2binh82m9bQA02QZjKsydvoK3qLwqMltwSqSMu1PUt9afwmlQAd4+tOzaDMRqBNLUBIjvGaMiek+1ag
+                3KGWytxwNoSMylrMJSBuSTWvu8eTZuJZs7W6xW4LjaXW7UJIYSo/ncKiAABrGpI2FWLzFksl8d4paGZS
+                unoPPyrh+Ll43jzVm3gD9zhjboCjdiy55RP7imlIKh0ExpJry7iFntetOJLc4FgV5iVtalKVrtcjTFwQ
+                mStQU0CATpAI18K5xjDe3pSru6Twg8BdggsXeMKU2ykpPdADiYAVlgjUeNMwXhHt54eQ4jDRgVgtwFK3
+                cRxAXRPeWQYdcWAQMmsTuKu43Y9uVxevJse0LhfBLFCAlPNubdo8zIrMrutKMZinrtNaR3hXtFu7mca+
+                IPB7dsKBU3a4ms6ZwY7mXoI9zVa07IsNeetl8XdtOIY9aoMXNvbC4POTkbBTnzqiS2TMH859a9VdfwS5
+                M3HHvGV6leVIRasPoSNdAIb67VpL+47PrdbKMSHGeKPOoQpsPOOgLCk5knVQ0Kdai2c4CbUp2x7OMWxD
+                5cSkXBSrU7QCtRPvXY27LdlcLGGdmWFsEqcTLzyTlKWQ4SAGj+YKCBrqrTpV66xfie2aUixwDArEtiUg
+                MuLST+JCdMu+RI/+4mtu7d8dO50IvsPtozBIasQJjm5TK1KicrZ205h8DVROGcY3LRU/xO8y8WxAaQ0g
+                BXL1EhExzPsKt2PCV6u7UvG+IcTvrbnukMi+dRLRy8tJKSNRC58cw8K8cxf4VjxFcYiq448xoWl0X0W6
+                L5l24et8y0QZL0KgIIB0kLmBS7j4T8Is8l09x/xQyq2s7e3QLRpLafwm0okJCiSVZZ33Ua9rwLhq54Xw
+                rBbKxxBxFhhvMNx802VquwpJAzuKJKYUoGR4RVlV04u9uG7u9sPlVpaatmkK76Xu/nST1KhEDplNJwPH
+                2scDqcJxTDn7IKBaTZvpKmm8ogOEqmZkzA0I8JJDGLPCrZJf4it7BdyqVOv3Nuypru7kLVpomNjqfMmt
+                O/2jcAWS3f2zxxgBNxnZfduMbtJUiDBhCtRqQIGYda55Pbn2PcMWbyMP40wRpwuJHLYuLh8KSkJQFZkN
+                nXIkaeI1PWtJjHxY9kpQ4ynH3cTaCU5B+xblzvZu9IWEgjLtrvvWoc+M7srw1/Nh+GY/ctDVKGMHZaVz
+                DoV5lOjdMDadN+laJ344OFbdDCbThPH3X0EKW6s2lvzhJJBAzhIM6xr4GqF38eg5rK8N4DuGwyVHK7xA
+                lKXJSRCglkyBuII1ArVv/HfxG4/zrHgvB2llsNhNxilw6gQomcoyidd/CK0CvjU49+XLNlg/DNskBQBW
+                1c3CoJJIKlvEnU6eA0rTH4w+1NDDbNtiGC2LLSEtoDOENnKkCAJWVExG5rVvfFb2sXpUFcbXLA8baytm
+                v0bqzZ9u3HuKOJZxTjfiW7DxShDbd+WkqWowkHLAiSK/S9DinW21Ot8pwoTnbmcqo1E9YNFJnTSKQp9a
+                lKCBonTauB4pvQ1w9eKfdsmW4Sgm/eLTEKITC1eBnbqYrgb7jbHMEeZueIMa4Ua4XbtVOXl1a4ktV0Sh
+                EqDbeVQVOm2sHSSKXg/Edpx7hGF40MdNsq1unQ+LCyug26pIIhPNSlYIStJkgjMNNq2Z4dVzMLsXeKcZ
+                UAjmK/Ef5lwjL++7mhJlEnrqRAmpPBOGuJLd1jmPuOBWVWbFHYJO3WkI4J4Ybf8Axri7vFKSWyi6vVrS
+                JG8Hr50bvDHBALgescNSpMqOcpmAfEjzqq3YcCWPLPLwVgkkJPMbT1/e+u5oU8Q8BWoKhe4M1CZgXTSd
+                NdPzCsd7Q+z20WSrHcEJGpIxFg6hP+fzj60odtHZxZpSTxLgSFAxHzDZKQACDpPp7UgfEL2aW6Uq/tPh
+                oUAlJQ22tyAAP8LZ21HtVZz4qOztpghOPlTvLSSlq0uFQozmSDyxtAg9Z6RWouvi44Gbd/Aub59GWO7h
+                zub838RSPy/fyrS3nxgcMuZAi0xN5AIUYw9A1AP+J7xitXc/Glh6DFpgGKu67LWw3p/561bnxo3CVZme
+                F3nAP3XsUQkH+7/ws/wK/wDyK8o0N58ZXEqtLXALBAj/AH1/cOfuLR+6U7hc+qUnpWmvPjC7QHkrTa2u
+                A2oXIUflnXTBCQdVOH/An7+JnRXvxXdq1yhaWuIbOyQtwukW2FW6e8TMyUnWda8+xDtO4xxQOjEOJ8Sf
+                S6jI4kuwlScwUEkDSAQDHkK0qOI8UCyo4nfamRF0tEKggK7pGoBMepqk8/z8qXFLPdhX4qzmP+Iyd6S2
+                02taENsha1kBKYmSTAFMRy0n+7Sgjfu00u9BFCXdN996kOefpUKUAQQdKgK2pmbTfSjSTrVvD2w7fWiV
+                5ikvInKRMTrE6VGL4a7h1/dWzhRzGllKskZZ8vKuu7J7ZV/x/wAHWTsKbdxyyCwdsoeST9hX6z2zi3GW
+                1OmXFJClQI1Ik/rTlfkVHWqtqvMha9SFuKI9AYH6VwWPYTZcRYJf4NjLSncPv2Cy+hJhRSeo8CDBHmK+
+                Ju1rsSxHs1fTf2mTFMAeVlavUs5VtKOyHQNAfAjQ+uleTu4o83nBUc2wMnT71SGJuZyAtakkEESYM1Cb
+                0uJyrzESRA9KqvLCiSQekgikKUzlCS2ABEEoFViEKCsrKCQJPcFLlsahIBmNEjap56UjSRO/dFD8wAdM
+                w06CsDqhBhURrMUzn66BX1/60Lr3USB60AuAJzydv3ooPmE6widN8/X6etQbtIj8JJg6yo66/wChQG5m
+                fwkD3PjPj7UtTwKQIQCBuOtQ5cqW4F/hoUFlfdQAJ9PDTagBA210jahVoJE6iRpvQpzGCkHvGAZ61h13
+                2rBIiNBTwdKEKJNEFa0ZII1MVAps9J0p6IiOlXcMzG9Z5agkglQUdIIBNVwrKnLIGnhXoPYowp3tU4Oa
+                bI5juKtITOwmR/Ov1bbTK1wO7mNOdWltlbi9m0lR9BrVOwtyixtUqUSoNJzEdVRr96+c7m84ys7XNbuy
+                lOmQKkq66TXK3t9xdjtrc4diAadtrlBRc21w+2ApB02K9dpHga+S8ew9DV7dItlFTTTy2wVCD3VEfyrR
+                5Ck9/uxMUle86GqzsqUfH0oFKmN9BGgpSnS2oLR3spmPGhvgw1dOpsng/byC2vKRoQDGonQmPakBwnUw
+                J02qc2vT3TWBQ8d/FNNSCUyjvdDCKArOTUT49zakc5UmIifAVOdUGFadYApRcWTOaKkKMfmV61ACiIJJ
+                jSiW242U8wEBWoJ6jxocp3OlCAQZ1EdawNa7UWSKLJRBFSEUaU6a0RTpWBOvWsA11FOTIrY4WlDt420d
+                Mzbisx2BCFEfcVSLgcOaN9q9k+GBq3ue3LhJd84lq1slP3jilbS2wsp/8xTX6W2+ItuW/Nt1pcRnyZp0
+                JETB96ViGLW11b3NgzdMLvnWsoYQ8kuQrrlmdpPtW1S8lQJaMonTQ188qQ7ASFqMKGX/AGjSen/tVa7s
+                W7pksXbKHl6Zh3V92d5y1x2M9mfCmKfiP4Bb3SlK7zzb5bc+qSJHlWi/7DOBlZy7YXxCB+VF+sFXnGp8
+                4pOIfDxwUvCn27S2xO0vnQCzdnEitLWv/wAsogg6Agn3Fco58MVirvJ4lvgkpMZLJCoPQ6qBitPcfC5i
+                WaLTiuxcCvyc2wcbJPgRmMVqLr4Z+IGklLeOYY6+JlHKdQn2VH8q0tz8O/HjCStuyw+8bABzs36YM7fm
+                ArXOdhfHLae5gyHpWR3Lps6eO9UXux7jpkkf2YvXBrqytDm3oqkL7KeN0JBXwtiQB27if61Yt+yPjq4C
+                uRw9dNREh65aZJnwClidq1F52f8AFtiXU3PDuJJ5ZCVZW849ikkH2qn/AGI4lNiu9HD+J/LIVlUr5dUg
+                /wCXf7VpXmXrUJ+abet82g5jakz9RVfmt7ZqIKR/jSPejCkbhYj1qZZkHmpHjrWHJvzEx4zWBbQPecTH
+                lRBbJB76frUt5VnurSfQ05DSSfzURbAOhmgKDPgKIJgVCjlgA71hQAglTiQdwnUzQZvAxUhwDdQ+tOsr
+                1DNwlXOTbqCVpzmToUkax6/eqiHRkzZ0ADSM4n6V7/8ACbgdrjnaPigu7pTLdvgai042pOfmOXLDYCZ8
+                lK9q+9v7C/szCf8AwfFLMmxW4/cOX6FuBUblWRaRoPEHatwvhDDrxNpdBpNvdtpZULu0QErIQQYCwZyk
+                SmCToTVLHz+zb7lW9qxfsqQFtqNy2xyxJ7kZTMRM+flXkQdC1PNovG3FNplcupH/ADDp6GoXcMMMFTim
+                2wk6qU6EpjyINULl5p8cxl1tDae9/fFRUAdROtLF43zc9pe5YjMhKc6xPlBEa71tmrhxLSudzQk7qUsz
+                v00FKKwu4UpptLraQAsqz5gfEQDNAXLlp4pK7VxtEkH8pidSf6ViXQ4hBDaVpHdGmfXxMQaFTtkp1QU9
+                aIdbVC0NzIPnB/Wm267a5zJaU2+W5EtrSDp49ZqGrdJC0hDuZOpOYKzR5mjNq293wV66EGJ9wKJFqgti
+                BlIVstMQPSocsEhJDZbGUyQFA/alJw1K1kOtIVl0k7j7VbThVqnMpTNsAqTqwkk+e1OGEW100vnhh5kg
+                BSHGErSsRtBFadfZjwk4nlr4YwNQVvGHNgj3iqh7GeCblRA4UwaUkfktkoj7Ctujs04fUwUpwdhpEBJS
+                0kJBA2BjcCtO72G8Clxaxw9bIdJKlOIccSsn1CtK2uBdmmB4FdtXGBqu7NxsQiLkrSJ6FCwR/WuhvsEb
+                xNppN6LOWlZm3E4VaBYVMyDyvHrXBcRdg/D/ABZcfNcSXN7fvq7xKwyj/wBCEmhV8O/B13hiLBvB8HRy
+                xlTdJsfxo/iUFDMfMgmtFd/CZwspedCGe8P3W30AecJeHtWjvfg/wd0k2mIXFtlTqAVkFU/xKMD6mtNd
+                fBncuuZsP4lQ2zH5XLdRI8p8K1X/AHOeIkg/+JYa8rLrnddSB5gBMn3jeqrnwk8VsO5kWOEXCEiIVibp
+                Cj4kAAgHXSa6hHYLieH4fbtK7HODsWu21cxy5OP4i3nP+HJzwPUCBW5d7PnkptkL+Hzg5aGE5hkxO7Sp
+                S4BJUeZJToRlObX61efXaYdhTiLX4YcEt8TWcpeLTd+0CBoQhRChr7HrWl4XxTGrTFmHsf7CuFH2UuEv
+                hPCDSVeqSVnXy2HhXumBcLcA8Y4JeHCuArPgW5vVNB5y3sG7Z6EKzBITkgAnyrdN9kWHi3Nrb41iCWsp
+                SUKQgpIO8pESKoK7K8Rwd5JsOLL9LIWFJQlpYTvMEJdAy10mG8LvWDbyLp5q9Wt5S+Y4yqQDGmpP615Z
+                e29u/a3NvjNgpqzuD3gtxKHCAQQVBPmPpUsOYZdyhi2tVoSchaacbA+8RVc3uGrQ5b2IQp1tRCmmXGlK
+                THhlV0mr1soNWpeQ08QRqhS0iR7mKBzGTbtgpcYtYTmdS++mCPEeH6U21xpm4ZWplAuWND+GtBM+cqBp
+                37QZWPwW31J3hRAg+kn7UpWJrJKHiWSNTmKVn+UCj+YYuGFJduVkvJgBbafTbQj1preG2gQAplIUkxnQ
+                6UdPGZpicJc5PLbublxGYkcx4uyPVQP+jVpu2TmKnIS4dJk/6NLNqVNlu4WgKVJ0J2+tMNvoCQ6dCD+G
+                Fe2beKJCloWouodGTTRmZB8+tCLtpLndWvM2MxlBSkb6TtVhN+3dtDKCpSDqEkSj6VbY5qk50oyFaswT
+                sPoasKZ55ULptonq2uCDVlNqygEtM5JykZUnbzANAFpcyj5e5TIjRkwI8aapotJ0aWgDZSVyR5EdKFm8
+                S8TzbQt5dCVPjQ+QpzaE3g0t1AHWeak/Wjatr1p1aU2txlH5XUoR3vTvH7ir7bHMaUrJlKiCsLIGo3ml
+                JtG1uEF2dvzggU8WLrKQUcpA83DCfSjdsVqaJUoGf3knNAqsUNlK0h5TZIylR7v0kb0RK2VBPccV+4Zn
+                MPPSoZccKfxG0iDqrVBj6VjrgSlK3GnHAd1N97L6irdvZhdsS0CB00gj+Rq1bW6w2MwKQBp3hIir6Uka
+                8o5p/MTvp0ilu26My87S1lUSCd/agcaQFnKtSB0EH+tfPqeJ3QkzaPWK5ISlbAIPhGUg+1c85jq0Oy8q
+                ytEqWVLU9bKQok+IyzrXRWt4ypCXOTZulPebUkBRVPmpP9Kski5tTOG4VcctUt5bnlKA66qBE+QrP2Uh
+                bMtYU8xmMBSFh2R6g1WXY3TTbmUJSk6N/gjOk+eZWv0oGbxSFoafFsrXvQnIonrKTpHmDW2tL23QCq4L
+                CWwe4S4Ex4ba1auMYw4KyuONSvpBP8j+tArELdTeZ+0/ABnmLyqREbgbj6U63OF3XesF2z4I7wafBEel
+                PasLB1ZV8tYr2P7qlGP+tW3bNHKLals2iNQAkBMnpoSRVFjCLllWW3uEPgJmX2438CIp/wAk+1qUWq1q
+                THfza+c1CrK9SO6lDRAMBpRO/wBqRcW12OWsi6LgVPNaWkfVI0+1Nz4k04htCWloUqVh1vvRHSAAfeto
+                26HwEFYUoiO63lG87zAPvV4WqVSoWy0kDRXNHe9NdKkA6hKoWk6jRWtEhtaHFfhAhR/OmJJ8TA1q0464
+                4rlpbCkp3zKIEz0rZWTLLMvvNQop1PeVp6VedfSgANtlWugQYIHiNaXlavACB3UyAopk+morA8lGVD6l
+                piBmKNCJ2EbGmIytCEk9dFgz9aQoJbIU2LxQVIIS8VgexOlGwbgGFQUwICxAHj0qpdvBvMp7J3dciEdP
+                GZqgL4XSwu0IABy5jJR71vbOxd7ud7vASQQKdCkoI+YzJmCggCPXQVbYsnAlCXHG3UDcobKT9KtcvK2m
+                QRlEqUAoT9RNU7gt8nMIWCZGSSJ9qrtPG4TmQ2lQT3T/ALTqPXSvn8oYNkXsStrN95KZbUgLRnHmFIkR
+                Wsuf2cxC71L7EI0SykuKAOswBMbUpnEsGVyVtYq20vLlAfJaUozqJmI8tK2iLS3cC3DiKyooIK2V5ojY
+                anf+taz9m2fLKWcSvwc4UFcxSCJ3GhjfyrY2+DPtIbWMYuXVsKBSXk8wifNOvWnYhbcQISBh16ys7qDz
+                SlSf+YQKpoRxCAW8RDVywe8A2xkVPqDBHtS/2ezdOy/YXlspBEDnKbT6kJVBHtV1pTNs7kh63gZyh3VE
+                +IXFbFeC2Vytt5y0zQe68GwvQ+1bFnDrK3GZ3DbVwJ1LnMS0T9hrrVu8+SQlBewy6fTIgtuIWE+EGZqE
+                3Vi64ly3uU2fRaHWIIHgeh+tKWhoKWpm/PIJiW093TpsaSi1urULdRfjKNA0lRAPhqTvTS/jqymF26Eg
+                kBXLzlY85J1HlQB3FIyFq1LgAKVJQuCJ3IBittbm5Vli3XOaZbfVt10UNquJDiCFrTfKUgmEJgBQ9xrQ
+                3t0WGi4jDn7hUpPcQyFa76qI2picQZS1mZtngpYgoQpoKHqM4/Wn2eRxoIXaXSkhclbnKII9SozW+beR
+                CZRf5Jn8qCE+QymYq00uAFNIcWOra0lBn/iFObScqwyyeYkapU4NT1kaVDTb63ULcbbQidT82B9o/nQF
+                y/bW7Fgy62kjllNzK1eMjKQOmxqHMSQhj/aLK9tkhOqQ3mj/AJdT9KvWN3YFgI+aAyDLLqxMjxmDPtQL
+                dt1gpYfZfT+6EqmB7TTGLJpWU2ybdJnUSTJ9orZmxf7pabZTKYKgVFX2o2G8rRJSRJIhbCgr11ipzNMr
+                KXl/ix/umlK08wJqEi2eBDHzQA0KwhYnx8xWtuW7Ll8uG3lFQDkHVXrOtUfkLFsq5TTbaVGYRlAJ8a+a
+                B2icLpbDlsVnOBA+WWAAeup8ulVLvjzAua0tVozcozCMiJWj1kb+lVrjj/Bi66LW2fWsqgOO2aCkRqQI
+                1n2rb2+N2zqxc2dzZq5ihmaC8qkz1KTqrbarn9pbFD3y6L2yz7qTzy1E/wAMGT5Cto2424EuouUBxYzA
+                hZBV0GomqOLY4cOcSp9t55WxS1KhPQ5ikAVcYxa1ucg5ztgpBnK6oELEeh/UVtbC/wAJvS4q0xJm6O6g
+                07OX01q0lFrkHLdQ42UmUltRB9oOtWbFLAbBYQUjqMhTHqDFOOHsOOZjbtvACSnOnf03pDi7dCsgt0sq
+                T/8AUNqEehAijLK3UqVyrS4ZMGFBRKdBEQDTUWTy2ibRtptadcheU2B5iN/SjUHWUcy4K0pAg5ilQjyG
+                v1NThFvYLSo2zy165jmSkjX0iK2fymbRhcEKGqjpB8AKci3Tl5aXTmTvlbGv1FX2rYpSEjOpUSCUAmPC
+                notHHE91TiFDfQJn9KlvD1uqPLSgmdQQlQ9asM2bzVwsMuWqREhEFJHjrMdae4xeZO8UySTmbUCfaos2
+                bprm/MNhxv8AdAZJI9yo1b+aDai38i+P4izIpC8StUO8l5sgrGXKEKHXqZ0o0sWdsUgJLSZlOVSljzmQ
+                aJu5t0hQa1SNgFd0+ugq22eaUkW4gpjRen+vWkhq6W8AhlhDSdQFKgk+E71ctvnF3Ti8Qs7dFsP7tTKi
+                sqHn3dPrWyTdTly2WdKRMh1Ijw0VrSWeIm3QsLw3FLcpJSQWZSfQgwRQL4hZcXDeGXzy065gyEwP8xI+
+                lW0XTbmRTTbqSrdLiSk+hrW4riD7aslmi2ypEkuuKEe2XUe9ad/EylSecxZrUUgyHQR9xNfMKsDu2VNB
+                vA7BRSDMMgAa7ghz+VC/YXlghK+RhrGZJBC3MqUa6TIrQu4ChbTnz2MMW7iFTFmEuZiek5f0qbRlhm6T
+                buvqdcaA7t20hZB8Mv5vtW3t7LDbpRccs2lpJyrUlDgymf8ACQR9q3zGCm1U2rDg7bOg75lPII6HLmTH
+                0rZXdleotnVIukc/TRTRKPXKTWptL/EnitBcbvrdSShxv5YlsHwEzFWGuHmhbD5mwceJOYJbsk5QJ6bH
+                9KFzhFrKp21cvLFxJEGxcUhRjxSVEE07DsFv79oOYo7dr5eiH3G1Mvx58twpP0ro28KdbAcbxB9QKQkk
+                7+4jX3pzTN2tQQnEQFp/gUjT66mpc4aursKDt+tI3JSND7mgw/AbiyW4ll6W1KknLMeYraNqxK0bKDd8
+                1B/fUAj2/KauMXy3G8rjQdV+XuMmf0E1s7RJcgqJQsCClTIT+omrjYRnl1eVA0EpgfUbVbVbuEBVq6cg
+                8YUJpCl4sgkNFt9H8Qy/SKJN9iqMwVbtNzqO4kg+W8mhRf3bgAdLqI3W0hMT/lM1hcxQpS3bvtKyH+8d
+                bBKvcf0rYtuX+RIdQwokauJkH6QRRw/MB8IUPAZZ9v6UpTryEEOvpW2nVQWnOfqTpUWylLSCCl4T/u50
+                9gashlRcRnw1h9o6hfNKVoPklQ/nV/5ZTzKOU2UOdQ4CB7lJmfPWrYtXUJCUrLJGndeWR6zvVlDd2lOV
+                u9KpM5Xe99yKC6YlGd1amBuVtqUEj+VV2W1hhK03nzST+VxeUmPUCD71TuWrtpEs4g2ghWua2zJA8CNv
+                pRvu3nISJtHF9FhtSSfTU1S51064JBUkbwvc/SqqsLbcOdz5pKzqQl6RNfPOM3z9pYNrDvLfA72a2V3j
+                10JSE/WuJd4qCyrmJZa72pbdKSfZOf6GrLWIs4ugtF5TZVOYm9WQZGkQ2DNJ/YL6nUusYy6sJI7iQp1c
+                9IzEfrW0RbjD81y5itwl06JRe36Wtf8AKkK+9XLXH7NhhLmIYpb2twVa8y8ZUSCfXQe1bMcdYIlaWxjG
+                GJCzA/2gu5vtA+tXre4wlGINKHyqHnUlaHOXlSvxAVEE+W9b4vBtKlItDnGxUtMR671pHsWcUHksfMMI
+                SDzlWxZzoA6ySYqqhxi0ZzW1wsrfcAceul8xRT/EE6a9KtC5VZ3LjLCWr99sSGm7XKsg7d4kCIrbsF5y
+                3SnI028N8yVAx7eG3WsVh2FOKLzzAaUe66WrlwCfMJP8qt2uB2zlkW7Nd18qtJkN3bpBT1gzP0qpb8H4
+                e0Qba4xZgBQVn+ffJJ8NVT7bVsHG8TaBt7XHrhtDXe77aSSP8x1+81daRjL6GufidwmQMq2HgNPGCdDW
+                tVh+OpdeSeMcSS0lcwVhRB8CRP0rYWqMRtQHHMdvXHUj8ykZkk+GWT+lXm8Rx1kcxN/ZrbUNDcsqbKTW
+                xtMZxQtoSpWH3TytR3lJJHX/AFFQviO4S4tu5wxxqD3VNrCgr9P1rYN4kxdgZ2HmCDB5jJj7GrzblomA
+                yCF/wkwPaaUyxch9xdw/ZrZV/dpUhSFA+ZzEH6VZU658ssti0C56PaEVTGJuochdi2oQChbT6Dm9CQKt
+                px7lEcxpy1M6krCv0mnq4gukJSE4ZeXCZnm50tp9ddx7VU/7RLdBWlyyWoJUdEXDSgPOVFJ+xqmvtSVn
+                X8vw7ilw2kSFodZhfhlhZ8KxntgsrlAUcAxxp0oJ5XLQTA880Gpt+0m3xVttKMOv8LUpeXPdIQQPPuk/
+                St7aY6pSw2zdWd1psRyVyfDoaHEsUSwBzbC4Uo7wrQjrBE1VXf4cIS+i5YcJ7qVqCVH0hWtVF3WEPKK1
+                3K2ztlXnSa+T+C+M7jG1ONrFwlAEkO3AdnSdyif1rY4fizGKrWV2q0rbUdS6khXqAkVbfFs69kVapJLc
+                znI36QKUuxsG2XU/IsOZdO+mdPaD96pXuCYK5aOLuMItnIAOsk+0zFJtuEcEfQwW7AMF0SOWsjL7CnX3
+                CuHWRWLdo91MytRV/Oh4cuPk7xLCW0FpaoUkSAZ6xJFemt4flGa0fetwTJQFZkafwnaqRuneY8k5FGTq
+                URt6QfvWNoZu/wAddu0pYEnmICpProas2yzereSTkyiBH6iIP3onr9/DGkpdWboFRAzEgj31qg9fOLWy
+                4lTjKbjMCllQQQR1zRJreWbynmEOtOPMPpgBxDmvuNqecXvcPDhaf5kODMl1OZJB3gbj61XxDiq4tblx
+                s27CkpBIITB/mPtVp++fsrdt5axcBxGcBYgpnoCI/SmtBK0c9HMaUSDCHIEnr500trfla1pUSknvNg7G
+                qqea22tKVoGVUp/D0/Wtf/aZ5DjbKmzzs5QXErhMf5Y/nXV27z7LyeW8tIWkKgHQexmr+S8W/wA1N+4k
+                DUJyJIrYOWzhaDjj2ZwjcIA+1Yy4WlQIISBE1s2kIctxzEJBIzAt90g7b0sWLaRCFLSpI0VMn38aS9ha
+                LvOh5QBAH5EwD6iSK1dxgnyeYWd7dW/UBt1UJPkCSKexhpdbQXbhxxQGpX1PqIIqL63RZspcKUuAGIiN
+                /OqAs2XxKE8qAQmP3fSkpatV4a7cXDC1lIMhLykTHpVbDLK3xi3RcMIVaKDhSAVc2PSa3TVi7Z5OTduJ
+                JHeGZWU/8JMVqsQuMTtVPrVes3Vs0qSzcWiVfRQgj714R2jfFAx2f8TvYGjgxN9yWW1l5OLKZCipM/l5
+                ao+pr//Z
+</property>
+        </structure>
+    </list-property>
+</report>
